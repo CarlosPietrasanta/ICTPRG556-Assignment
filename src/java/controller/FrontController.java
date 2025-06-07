@@ -49,7 +49,7 @@ public class FrontController extends HttpServlet {
         response.setContentType("text/html");
 
         // Get the requested action from the request parameters
-        String requestedAction = request.getParameter("Action");
+        String requestedAction = request.getParameter("action");
         HttpSession session = request.getSession();
         AdmitBookStoreDAO dao = new AdmitBookStoreDAO();
         String nextPage = "";
@@ -62,7 +62,7 @@ public class FrontController extends HttpServlet {
             session = request.getSession();
             try {
                 books = dao.getAllBooks();
-                session.setAttribute("Books", books);
+                session.setAttribute("books", books);
                 nextPage = "/jsp/titles.jsp";
             } catch (Exception ex) {
                 request.setAttribute("result", ex.getMessage());
@@ -102,7 +102,7 @@ public class FrontController extends HttpServlet {
                         CartItem item = cart.get(isbn);
                         item.setQuantity(quantity);
                     } else {
-                        Books book = this.getBookFromList(isbn, session);
+                        Book book = this.getBookFromList(isbn, session);
                         CartItem item = new CartItem(book);
                         item.setQuantity(quantity);
                         cart.put(isbn, item);
@@ -111,11 +111,11 @@ public class FrontController extends HttpServlet {
             }
 
             this.dispatch(request, response, nextPage);
-        } else if (requestedAction.equals("Checkout")) {
+        } else if (requestedAction.equals("checkout")) {
             // Redirect to the checkout page
             nextPage = "/jsp/checkout.jsp";
             this.dispatch(request, response, nextPage);
-        } else if (requestedAction.equals("Continue")) {
+        } else if (requestedAction.equals("continue")) {
             // Redirect to the titles page
             nextPage = "/jsp/titles.jsp";
             this.dispatch(request, response, nextPage);

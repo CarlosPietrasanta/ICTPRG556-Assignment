@@ -47,8 +47,8 @@ public class AdmitBookStoreDAO {
             System.out.println("rs has records");
             String isbn = rs.getString(1);
             String title = rs.getString(2);
-            String author = rs.getString(4);
-            double price = rs.getDouble(3);
+            String author = rs.getString(3);
+            double price = rs.getDouble(4);
             list.add(new Book(isbn, title, author, price));
         }
         return list;
