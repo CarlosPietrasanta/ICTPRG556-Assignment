@@ -30,7 +30,7 @@
                 </thead>
                 <tbody>
                     <c:set var="totalCost" value="0.0" scope="page" />
-                    <c:forEach var="item" items="${sessionScope.cart.values}">
+                    <c:forEach var="item" items="${sessionScope.cart.values()}">
                         <tr>
                             <td>${item}</td>
                         </tr>
@@ -80,8 +80,7 @@
                 <tr>
                     <td>Order Amount $</td>
                     <td>
-                        <input type="text" name="amount" 
-                               value="<fmt:formatNumber value='${totalCost}' type='number' minFractionDigits='2' />">
+                        <input type="text" name="amount" value="<fmt:formatNumber value='${totalCost}' type='number' minFractionDigits='2' />">
                     </td>
                 </tr>
             </table>
