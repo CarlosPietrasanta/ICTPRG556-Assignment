@@ -1,3 +1,10 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
+<%@ page import="model.Book" %>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -7,11 +14,12 @@
         <link rel="stylesheet" type="text/css" href="css/style.css">
     </head>
     <body>
-        <%@ page isErrorPage="true" %>
-        <%
-            String msg = (String) request.getAttribute("result");
-            out.print("<h3>" + msg + "</h3>");
-            session.invalidate();
-        %>
+
+        <c:if test="${not empty requestScope.result}">
+            <h3>${requestScope.result}</h3>
+        </c:if>
+
+        <% session.invalidate();%>
+
     </body>
 </html>

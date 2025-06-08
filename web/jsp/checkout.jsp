@@ -1,4 +1,12 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
+<%@ page import="model.Book" %>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
+
 <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -7,9 +15,6 @@
         <link rel="stylesheet" type="text/css" href="css/style.css">
     </head>
     <body>
-        <%@ page import="model.*" %>
-        <%@ page import="java.util.*" %>
-        <%@ page import="java.text.*" %>
 
         <h1>Shopping Cart Check Out</h1>
 
@@ -22,35 +27,19 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <%
-                        Map items = (Map) session.getAttribute("cart");
-                        Set entries = items.entrySet();
-                        Iterator iter = entries.iterator();
-                        double totalCostOfOrder = 0.00;
-                        Book book = null;
-                        CartItem item = null;
-
-                        while (iter.hasNext()) {
-                            Map.Entry entry = (Map.Entry) iter.next();
-                            item = (CartItem) entry.getValue();
-                            double cost = item.getOrderCost();
-                            totalCostOfOrder += cost;
-                    %>
-                    <tr>
-                        <td><%= item%></td>
-                    </tr>
-                    <%
-                        } // end while
-                        DecimalFormat dollars = new DecimalFormat("0.00");
-                        String totalOrderInDollars = dollars.format(totalCostOfOrder);
-                    %>
+                    <c:set var="totalCost" value="0.0" scope="page" />
+                    <c:forEach var="item" items="${sessionScope.cart.values}">
+                        <tr>
+                            <td>${item}</td>
+                        </tr>
+                        <c:set var="totalCost" value="${totalCost + item.orderCost}" scope="page" />
+                    </c:forEach>
                 </tbody>
             </table>
 
             <p>Please input the following information.</p>
 
             <table>
-
                 <tr>
                     <td>Last name:</td>
                     <td><input type="text" name="lastname" size="25"></td>
@@ -73,9 +62,7 @@
                 </tr>
                 <tr>
                     <td>Phone #:</td>
-                    <td>
-                        <input type="text" name="phone" size="12">
-                    </td>
+                    <td><input type="text" name="phone" size="12"></td>
                 </tr>
                 <tr>
                     <td>Credit Card #:</td>
@@ -90,11 +77,15 @@
                 </tr>
                 <tr>
                     <td>Order Amount $</td>
-                    <td><input type="text" name="amount" value="<%= totalOrderInDollars%>"></td>
+                    <td>
+                        <input type="text" name="amount" 
+                               value="<fmt:formatNumber value='${totalCost}' type='number' minFractionDigits='2' />">
+                    </td>
                 </tr>
             </table>
 
             <p><input type="submit" value="Submit"></p>
         </form>
+
     </body>
 </html>
