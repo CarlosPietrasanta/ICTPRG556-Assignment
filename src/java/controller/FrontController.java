@@ -11,9 +11,9 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import java.io.*;
 import java.util.*;
+import javax.ejb.EJB;
 import model.Book;
-import model.CartItem;
-import utility.AdmitBookStoreDAO;
+import service.BookService;
 
 /**
  * FrontController class to handle HTTP requests and responses.
@@ -21,7 +21,9 @@ import utility.AdmitBookStoreDAO;
 public class FrontController extends HttpServlet {
 
     private final HashMap actions = new HashMap();
-
+    
+    @EJB
+    public BookService bookService;
     /**
      * Initialize global variables.
      * @param config ServletConfig object

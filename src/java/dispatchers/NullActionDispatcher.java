@@ -10,26 +10,24 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import model.Book;
-import utility.AdmitBookStoreDAO;
 
 /**
  *
  * @author Carlos Pietrasanta
  */
 public class NullActionDispatcher implements Dispatcher {
-
+    
     @Override
     public String execute(HttpServletRequest request, FrontController frontController) {
         
         HttpSession session = request.getSession();
         
         String nextPage = "";
-
-        AdmitBookStoreDAO dao = new AdmitBookStoreDAO();
+        
         List<Book> books = null;
-        session = request.getSession();
         try {
-            books = dao.getAllBooks();
+            books = frontController.bookService.findAllBooks();
+            
             session.setAttribute("books", books);
             nextPage = "/jsp/titles.jsp";
         } catch (Exception ex) {
