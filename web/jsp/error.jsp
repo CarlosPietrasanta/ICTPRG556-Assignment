@@ -14,6 +14,7 @@
         <link rel="stylesheet" type="text/css" href="css/style.css">
     </head>
     <body>
+        <%@include file="./header.jsp" %>
 
         <c:if test="${not empty requestScope.result}">
             <h3>${requestScope.result}</h3>
@@ -21,5 +22,6 @@
 
         <% session.invalidate();%>
 
+        <%@include file="./footer.jsp" %>
     </body>
 </html>

@@ -14,7 +14,9 @@
         <title>Online Bookshop</title>
         <link rel="stylesheet" type="text/css" href="css/style.css">
     </head>
-    <body>
+    <body>        
+        
+        <%@include file="./header.jsp" %>
 
         <h1>The following items are in your shopping cart</h1>
         <form name="form1" method="post" action="./books">
@@ -70,6 +72,8 @@
             <p><a href="./books?action=continue">Continue Shopping</a></p>
             <p><a href="./books?action=checkout">Check Out</a></p>
         </div>
-
+                            
+        <%@include file="./footer.jsp" %>
+        
     </body>
 </html>

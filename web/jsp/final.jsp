@@ -15,6 +15,7 @@
         <link rel="stylesheet" type="text/css" href="css/style.css">
     </head>
     <body>
+        <%@include file="./header.jsp" %>
 
         <h2>Online Bookstore</h2>
         <hr>
@@ -29,6 +30,8 @@
         </c:if>
 
         <% session.invalidate();%>
+        
+        <%@include file="./footer.jsp" %>
 
     </body>
 </html>

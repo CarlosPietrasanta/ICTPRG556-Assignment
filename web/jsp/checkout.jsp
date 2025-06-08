@@ -15,7 +15,9 @@
         <link rel="stylesheet" type="text/css" href="css/style.css">
     </head>
     <body>
-
+        
+        <%@include file="./header.jsp" %>
+        
         <h1>Shopping Cart Check Out</h1>
 
         <form method="post" action="jsp/thankyou.jsp">
@@ -86,6 +88,8 @@
 
             <p><input type="submit" value="Submit"></p>
         </form>
+                    
+        <%@include file="./footer.jsp" %>
 
     </body>
 </html>

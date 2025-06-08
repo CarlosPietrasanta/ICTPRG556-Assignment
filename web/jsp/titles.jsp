@@ -15,6 +15,8 @@
         <link rel="stylesheet" type="text/css" href="css/style.css">
     </head>
     <body>
+        
+        <%@include file="./header.jsp" %>
 
         <h1>Items in your Shopping Cart</h1>
         <table>
@@ -87,5 +89,7 @@
             <p><a href="./books?action=view_cart">View Shopping Cart</a></p>
         </div>
 
+        <%@include file="./footer.jsp" %>
+        
     </body>
 </html>
