@@ -12,11 +12,21 @@ import javax.servlet.http.HttpSession;
 import model.Book;
 
 /**
- *
+ * Loads all available books and stores them in the session.
+ * Used when no specific action is requested by the user.
+ * 
  * @author Carlos Pietrasanta
  */
 public class NullActionDispatcher implements Dispatcher {
     
+    /**
+     * Executes the default action by retrieving all books and forwarding to the titles page. 
+     * If an error occurs, redirects to the error page.
+     * 
+     * @param request the HTTP request
+     * @param frontController used to access the book service
+     * @return the path to either the titles or error JSP page
+     */
     @Override
     public String execute(HttpServletRequest request, FrontController frontController) {
         

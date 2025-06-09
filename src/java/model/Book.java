@@ -32,6 +32,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Book.findByAuthor", query = "SELECT b FROM Book b WHERE b.author = :author"),
     @NamedQuery(name = "Book.findByPrice", query = "SELECT b FROM Book b WHERE b.price = :price")})
 public class Book implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -50,13 +51,20 @@ public class Book implements Serializable {
     @Column(name = "PRICE")
     private double price;
 
+    /**
+     * Default Book class Constructor with no parameters.
+     */
     public Book() {
     }
-
-    public Book(String isbn) {
-        this.isbn = isbn;
-    }
-
+    
+    /**
+     * Constructs a new Book with the specified ISBN, title, author, and price.
+     *
+     * @param isbn the ISBN identifier of the book
+     * @param title the title of the book
+     * @param author the author of the book
+     * @param price the price of the book
+     */
     public Book(String isbn, String title, String author, double price) {
         this.isbn = isbn;
         this.author = author;
@@ -64,34 +72,74 @@ public class Book implements Serializable {
         this.price = price;
     }
 
+    /**
+     * Returns the ISBN of the book.
+     *
+     * @return the ISBN
+     */
     public String getIsbn() {
         return isbn;
     }
 
+    /**
+     * Sets the ISBN of the book.
+     *
+     * @param isbn the new ISBN to set
+     */
     public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
 
+    /**
+     * Returns the title of the book.
+     *
+     * @return the title
+     */
     public String getTitle() {
         return title;
     }
 
+    /**
+     * Sets the title of the book.
+     *
+     * @param title the new title to set
+     */
     public void setTitle(String title) {
         this.title = title;
     }
 
+    /**
+     * Returns the author of the book.
+     *
+     * @return the author
+     */
     public String getAuthor() {
         return author;
     }
 
+    /**
+     * Sets the author of the book.
+     *
+     * @param author the new author to set
+     */
     public void setAuthor(String author) {
         this.author = author;
     }
 
+    /**
+     * Returns the price of the book.
+     *
+     * @return the price
+     */
     public double getPrice() {
         return price;
     }
 
+    /**
+     * Sets the price of the book.
+     *
+     * @param price the new price to set
+     */
     public void setPrice(double price) {
         this.price = price;
     }
@@ -115,7 +163,7 @@ public class Book implements Serializable {
         }
         return true;
     }
-        
+
     /**
      * Returns a string representation of the book, which includes the title.
      *
@@ -125,7 +173,7 @@ public class Book implements Serializable {
     public String toString() {
         return "Title: " + title + "  ";
     }
-        
+
     /**
      * Returns the price of the book formatted as a dollar amount.
      *

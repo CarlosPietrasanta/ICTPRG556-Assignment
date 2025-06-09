@@ -12,7 +12,9 @@ import javax.persistence.PersistenceContext;
 import model.Book;
 
 /**
- *
+ * Stateless service bean for managing book related database operations.
+ * Provides methods to retrieve book data from the database using JPA.
+ * 
  * @author Carlos Pietrasanta
  */
 @Stateless
@@ -21,6 +23,12 @@ public class BookService {
     @PersistenceContext(unitName = "BookShopPU")
     private EntityManager em;
 
+    /**
+     * Retrieves all books from the database.
+     * Uses the named query "Book.findAll".
+     *
+     * @return a list of all books
+     */
     public List<Book> findAllBooks() {
         return em.createNamedQuery("Book.findAll", Book.class).getResultList();
     }

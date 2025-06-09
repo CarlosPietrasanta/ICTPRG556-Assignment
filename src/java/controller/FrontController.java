@@ -22,6 +22,9 @@ public class FrontController extends HttpServlet {
 
     private final HashMap actions = new HashMap();
     
+    /**
+    * Injected EJB used to retrieve book data from the database.
+    */
     @EJB
     public BookService bookService;
     /**

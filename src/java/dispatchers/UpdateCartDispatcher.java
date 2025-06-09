@@ -14,11 +14,20 @@ import javax.servlet.http.HttpSession;
 import model.CartItem;
 
 /**
- *
+ * Updates the user's shopping cart by removing selected items and updating quantities.
+ * Redirects to the cart page after processing.
+ * 
  * @author Carlos Pietrasanta
  */
 public class UpdateCartDispatcher implements Dispatcher {
-
+    
+    /**
+     * Processes the update-cart action.
+     * 
+     * @param request the HTTP request containing updated quantities and items to remove
+     * @param frontController that is handling HTTP requests and responses.
+     * @return the path to the cart JSP page
+     */
     @Override
     public String execute(HttpServletRequest request, FrontController frontController) {
 

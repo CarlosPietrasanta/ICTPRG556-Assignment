@@ -14,11 +14,21 @@ import model.Book;
 import model.CartItem;
 
 /**
- *
+ * Adds selected books to the shopping cart stored in the user's session.
+ * If the cart doesn't exist, it creates a new one. If it does, it updates item quantities.
+ * Redirects back to the titles page after processing.
+ * 
  * @author Carlos Pietrasanta
  */
 public class AddToCartDispatcher implements Dispatcher {
     
+    /**
+     * Processes the "Add to Cart" action.
+     * 
+     * @param request the HTTP request containing book selection
+     * @param frontController that is handling HTTP requests and responses.
+     * @return the path to the titles JSP page
+     */
     @Override
     public String execute(HttpServletRequest request, FrontController frontController){
 

@@ -9,11 +9,19 @@ import controller.FrontController;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- *
+ * Returns the user to the titles page to continue browsing books.
+ * 
  * @author Carlos Pietrasanta
  */
 public class ContinueDispatcher implements Dispatcher {
     
+        /**
+        * Processes the "Continue Shopping" action.
+        * 
+        * @param request the HTTP request
+        * @param frontController that is handling HTTP requests and responses.
+        * @return the path to the titles JSP page
+        */
         @Override
         public String execute(HttpServletRequest request, FrontController frontController) {
         
